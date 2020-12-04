@@ -87,19 +87,21 @@ export default {
     async getProductById(id, keySeller) {
         let results;
         switch (keySeller) {
-            case 0:
-                results = await api.api1().get(`api/item/:${id}`)
+            case '0':
+                console.log("enntro")
+                results = await api.api1.get(`api/item/${id}`)
                 return results.data;
 
-            case 1:
-                results = await api.api2().get(`api/item/:${id}`)
+            case '1':
+                results = await api.api2.get(`api/item/${id}`)
                 return results.data;
 
-            case 2:
-                results = await api.api3().get(`api/item/:${id}`)
+            case '2':
+                results = await api.api3.get(`api/item/:${id}`)
                 return results.data;
 
             default:
+
                 break;
         }
     }
