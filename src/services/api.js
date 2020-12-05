@@ -5,7 +5,7 @@ const api1 = axios.create({
 })
 
 const api2 = axios.create({
-    baseURL: 'api2'
+    baseURL: 'http://production.eba-2veq4gdy.us-west-2.elasticbeanstalk.com/'
 })
 
 const api3 = axios.create({
