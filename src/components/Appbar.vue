@@ -1,22 +1,28 @@
 <template>
   <div>
     <v-app-bar>
-      <a href="" class="ml-10">
+      <a class="ml-10" @click="home()" >
         <img id="Logo" src="../assets/oldwave-logo-horizontal.png" alt="logo" />
       </a>
       <v-spacer></v-spacer>
       <button id="BotonIniciarSesion" class="ma-2">
         <label id="LetraIniciarSesion">Regístrate o inicia sesión</label>
       </button>
-      <a href="" class="ma-2">
+      <a class="ma-2">
         <img id="Login-icon" src="../assets/login-icon.svg" />
       </a>
-      <a href="" class="ma-2">
+      <a class="ma-2" @click="cart()">
         <img id="Carrito-icon" src="../assets/carrito-icon.svg" />
       </a>
     </v-app-bar>
     <v-app-bar color="#772CE8">
-      <v-text-field dark rounded outlined prepend-inner-icon="mdi-magnify" v-model="productName">
+      <v-text-field
+        dark
+        rounded
+        outlined
+        prepend-inner-icon="mdi-magnify"
+        v-model="productName"
+      >
         <label id="EstoyBuscando">Estoy Buscando</label>
       </v-text-field>
 
@@ -54,6 +60,11 @@ export default {
     cart() {
       this.$router.push({
         name: "Cart",
+      });
+    },
+    home() {
+      this.$router.push({
+        name: "Home",
       });
     },
   },
