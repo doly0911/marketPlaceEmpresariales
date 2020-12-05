@@ -9,7 +9,7 @@ const api2 = axios.create({
 })
 
 const api3 = axios.create({
-    baseURL: 'api3'
+    baseURL: 'https://yurgqjbmwb.execute-api.us-east-2.amazonaws.com/dev/'
 })
 
 export default { api1, api2, api3 };
