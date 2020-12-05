@@ -115,12 +115,12 @@
     <div>
         <v-row>
             <v-col>
-                <v-img src="../assets/logo-oldwave-header.png"></v-img>
+                <v-img id="logolink" src="../assets/logo-oldwave-header.png"></v-img>
             </v-col>
             <v-col>
-                <v-row><v-title>oldwave</v-title></v-row>
+                <v-row><v-title id="titletext">oldwave</v-title></v-row>
                 <v-row>
-                <v-a>¿Quienes somos?</v-a>
+                <v-a >¿Quienes somos?</v-a>
                 </v-row>
                 <v-row>
                 <v-a>Nuestras tiendas</v-a>
@@ -128,7 +128,7 @@
             </v-col>
             <v-col>
                 <v-row>
-                <v-title>Links de interés</v-title>
+                <v-title id="titletext">Links de interés</v-title>
                 </v-row>
                 <v-row>
                 <v-a>Preguntas frecuentes</v-a>
@@ -142,33 +142,71 @@
             </v-col>
             <v-col>
                 <v-row>  
-                <v-title>Contácto</v-title>
+                  <v-title id="titletext">Contácto</v-title>
                 </v-row>
                 <v-row>
-                <v-a>servicioalcliente@oldwave.co <br> Telefono: 316 1924</v-a>
+                  <v-a>servicioalcliente@oldwave.co <br> Telefono: 316 1924</v-a>
                 </v-row>
                 <v-row>
-                <v-title>Redes Sociales</v-title>
-                <v-col><v-img>logo1</v-img></v-col>
-                <v-col><v-img>logo2</v-img></v-col>
+                <v-title id="titletext">Redes Sociales</v-title>
                 </v-row>  
-                
+                <v-row>
+                   <v-col><v-img id="networkicon" src="../assets/icon-facebook.png"></v-img></v-col>
+                   <v-col><v-img id="networkicon" src="../assets/icon-instagram.png"></v-img></v-col>
+                </v-row>
             </v-col>
             
         </v-row>
     </div>
     <!--Agradecimientos-->
-    <div>
+    <div id="thanks">
+      <div class="text-center">
         <v-row>
             <v-text>oldwave© 2020 | Powered by:</v-text>
-            <v-img src="../assets/experimentality-vtex.png"></v-img>
+            <div id="thanksimg">
+            <v-img  src="../assets/experimentality-vtex.png" ></v-img>
+            </div>
         </v-row>
     </div>
+    </div>
 </div>
-
-
 </template>
 <style scope>
+#networkicon{
+  margin: auto;
+  width: 40px;
+}
+#logolink{
+  margin: auto;
+  width: 120px;
+  height: 89.33px;
+}
+#titletext{
+  top: 2205px;
+left: 345px;
+width: 200px;
+height: 28px;
+letter-spacing: var(--unnamed-character-spacing-0);
+color: var(--unnamed-color-772ce8);
+text-align: left;
+letter-spacing: 0px;
+color: #772CE8;
+opacity: 1;
+font-size: 20px;
+font-weight: bold;
+font-family: 'Poppins', sans-serif;
+}
+#thanksimg{
+  width: 150px;
+  display: flex;
+  align-items: center;
+}
+#thanks{
+  margin: auto;
+    width: 35%;
+    padding: 10px;   
+}
+
 .v-bottom-navigation{
 justify-content: space-between;
 }
