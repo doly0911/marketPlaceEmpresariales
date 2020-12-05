@@ -1,125 +1,97 @@
 <template>
   <div>
-
     <v-row>
-    <v-col cols="3">
-      <div id="divFiltros">
-        <v-col id="filtrosMenu">
-          <v-card class="mx-auto" max-width="200">
-            <v-card-title class="space-betwen"> Filtros </v-card-title>
+      <v-col cols="3">
+        <div id="divFiltros">
+          <v-col id="filtrosMenu">
+            <v-card class="mx-auto" max-width="200">
+              <v-card-title class="space-betwen"> Filtros </v-card-title>
 
-            <v-divider></v-divider>
+              <v-divider></v-divider>
 
-            <v-list flat subheader three-line>
-              <v-subheader>Tipos de Producto</v-subheader>
+              <v-list flat subheader three-line>
+                <v-subheader>Tipos de Producto</v-subheader>
 
-              <v-list-item-group>
-                <v-list-item>
-                  <template v-slot:default="{ active }">
-                    <v-list-item-action>
-                      <v-checkbox :input-value="active"></v-checkbox>
-                    </v-list-item-action>
+                <v-list-item-group>
+                  <v-list-item>
+                    <template v-slot:default="{ active }">
+                      <v-list-item-action>
+                        <v-checkbox :input-value="active"></v-checkbox>
+                      </v-list-item-action>
 
-                    <v-list-item-content>
-                      <v-list-item-title id="opcionesFiltro"
-                        >Iphone 11</v-list-item-title
-                      >
-                      <v-list-item-subtitle></v-list-item-subtitle>
-                    </v-list-item-content>
-                  </template>
-                </v-list-item>
+                      <v-list-item-content>
+                        <v-list-item-title id="opcionesFiltro">Iphone 11</v-list-item-title>
+                        <v-list-item-subtitle></v-list-item-subtitle>
+                      </v-list-item-content>
+                    </template>
+                  </v-list-item>
 
-                <v-list-item>
-                  <template v-slot:default="{ active }">
-                    <v-list-item-action>
-                      <v-checkbox :input-value="active"></v-checkbox>
-                    </v-list-item-action>
+                  <v-list-item>
+                    <template v-slot:default="{ active }">
+                      <v-list-item-action>
+                        <v-checkbox :input-value="active"></v-checkbox>
+                      </v-list-item-action>
 
-                    <v-list-item-content>
-                      <v-list-item-title id="opcionesFiltro"
-                        >Iphone 11 pro</v-list-item-title
-                      >
-                      <v-list-item-subtitle></v-list-item-subtitle>
-                    </v-list-item-content>
-                  </template>
-                </v-list-item>
+                      <v-list-item-content>
+                        <v-list-item-title id="opcionesFiltro">Iphone 11 pro</v-list-item-title>
+                        <v-list-item-subtitle></v-list-item-subtitle>
+                      </v-list-item-content>
+                    </template>
+                  </v-list-item>
 
-                <v-list-item>
-                  <template v-slot:default="{ active }">
-                    <v-list-item-action>
-                      <v-checkbox :input-value="active"></v-checkbox>
-                    </v-list-item-action>
+                  <v-list-item>
+                    <template v-slot:default="{ active }">
+                      <v-list-item-action>
+                        <v-checkbox :input-value="active"></v-checkbox>
+                      </v-list-item-action>
 
-                    <v-list-item-content>
-                      <v-list-item-title id="opcionesFiltro"
-                        >Iphone 11 pro plus</v-list-item-title
-                      >
-                      <v-list-item-subtitle></v-list-item-subtitle>
-                    </v-list-item-content>
-                  </template>
-                </v-list-item>
-              </v-list-item-group>
-            </v-list>
-          </v-card>
-        </v-col>
-      </div>
-    </v-col>
+                      <v-list-item-content>
+                        <v-list-item-title id="opcionesFiltro">Iphone 11 pro plus</v-list-item-title>
+                        <v-list-item-subtitle></v-list-item-subtitle>
+                      </v-list-item-content>
+                    </template>
+                  </v-list-item>
+                </v-list-item-group>
+              </v-list>
+            </v-card>
+          </v-col>
+        </div>
+      </v-col>
 
-    <v-col cols="9">
-      <!--Recorrer el Array de proveedores que son 3 -->
-      <div id="divProducts">
-        <div v-for="(product, index) in products" v-bind:key="index">
-          <div v-if="product != null">
-            <v-row>
-              <v-col
-                id="items"
-                v-for="item in product.items"
-                v-bind:key="item.id"
-                cols="9"
-                sm="3"
-              >
-                <!--Recorrer Los items del vendedor -->
-                <v-card class="mx-auto my-12" max-width="265px">
-                  <v-img
-                    v-bind:src="item.thumbnail"
-                    v-on:click="goDetails(index, item.id)"
-                  ></v-img>
-                  <v-card-text>
-                    <!--ESTA ES LA CLASE QUE ME CENTRA TODO -->
-                    <div class="text-center">
-                      <v-card-title id="productName" class="space-betwen">{{
-                        item.name
-                      }}</v-card-title>
-                      <v-card-text id="productBrand" class="space-betwen">{{
-                        item.brand
-                      }}</v-card-text>
-                      <v-row>
-                        <v-col>
-                          <p id="oldPrice">{{ item.price }}</p>
-                        </v-col>
-                        <v-col>
-                          <p id="newPrice">{{ item.price }}</p>
-                        </v-col>
-                      </v-row>
-                      <v-btn
-                        rounded
-                        color="#772CE8"
-                        dark
-                        v-on:click="addToCart(index, item.id)"
-                      >
-                        Agregar al carrito
-                      </v-btn>
-                    </div>
-                  </v-card-text>
-                </v-card>
-              </v-col>
-            </v-row>
+      <v-col cols="9">
+        <!--Recorrer el Array de proveedores que son 3 -->
+        <div id="divProducts">
+          <div v-for="(product, index) in products" v-bind:key="index">
+            <div v-if="product != null">
+              <v-row>
+                <v-col id="items" v-for="item in product.items" v-bind:key="item.id" cols="9" sm="3">
+                  <!--Recorrer Los items del vendedor -->
+                  <v-card class="mx-auto my-12" max-width="265px">
+                    <v-img v-bind:src="item.thumbnail" v-on:click="goDetails(index, item.id)"></v-img>
+                    <v-card-text>
+                      <!--ESTA ES LA CLASE QUE ME CENTRA TODO -->
+                      <div class="text-center">
+                        <v-card-title id="productName" class="space-betwen">{{ item.name }}</v-card-title>
+                        <v-card-text id="productBrand" class="space-betwen">{{ item.brand }}</v-card-text>
+                        <v-row>
+                          <v-col>
+                            <p id="oldPrice">{{ item.price }}</p>
+                          </v-col>
+                          <v-col>
+                            <p id="newPrice">{{ item.price }}</p>
+                          </v-col>
+                        </v-row>
+                        <v-btn rounded color="#772CE8" dark v-on:click="addToCart(index, item.id)"> Agregar al carrito </v-btn>
+                      </div>
+                    </v-card-text>
+                  </v-card>
+                </v-col>
+              </v-row>
+            </div>
           </div>
         </div>
-      </div>
-    </v-col>
+      </v-col>
     </v-row>
-
   </div>
 </template>
 
@@ -139,6 +111,7 @@ export default {
     $route(to, from) {
       if (to !== from) {
         this.search = this.$route.params.search;
+        this.reload();
       }
     },
   },
@@ -161,6 +134,10 @@ export default {
   },
 
   methods: {
+    reload: async function () {
+      this.search = this.$route.params.search;
+      this.products = await productServices.getProducts(this.search);
+    },
     goDetails: function (idSeller, idProduct) {
       this.$router.push({
         name: "Details",
@@ -183,8 +160,7 @@ export default {
 
 <style scoped>
 #productBrand {
-  font: var(--unnamed-font-style-bold) bold var(--unnamed-font-weight-600) 12px/18px
-    var(--unnamed-font-family-poppins);
+  font: var(--unnamed-font-style-bold) bold var(--unnamed-font-weight-600) 12px/18px var(--unnamed-font-family-poppins);
   letter-spacing: var(--unnamed-character-spacing-0);
   color: var(--unnamed-color-772ce8);
   font: bold bold 600 12px;
@@ -195,9 +171,7 @@ export default {
   font-weight: bold;
 }
 #productName {
-  font: var(--unnamed-font-style-normal) normal
-    var(--unnamed-font-weight-medium) var(--unnamed-font-size-13) / 16px
-    var(--unnamed-font-family-poppins);
+  font: var(--unnamed-font-style-normal) normal var(--unnamed-font-weight-medium) var(--unnamed-font-size-13) / 16px var(--unnamed-font-family-poppins);
   letter-spacing: var(--unnamed-character-spacing-0);
   color: var(--unnamed-color-3b3b3b);
   text-align: center;
@@ -209,9 +183,7 @@ export default {
 #oldPrice {
   text-decoration: line-through;
 
-  font: var(--unnamed-font-style-normal) normal
-    var(--unnamed-font-weight-medium) var(--unnamed-font-size-13) / 16px
-    var(--unnamed-font-family-poppins);
+  font: var(--unnamed-font-style-normal) normal var(--unnamed-font-weight-medium) var(--unnamed-font-size-13) / 16px var(--unnamed-font-family-poppins);
   letter-spacing: var(--unnamed-character-spacing-0);
   color: var(--unnamed-color-3b3b3b);
   text-align: center;
@@ -222,8 +194,7 @@ export default {
   font-size: 16px;
 }
 #newPrice {
-  font: var(--unnamed-font-style-normal) normal bold 14px/21px
-    var(--unnamed-font-family-poppins);
+  font: var(--unnamed-font-style-normal) normal bold 14px/21px var(--unnamed-font-family-poppins);
   letter-spacing: var(--unnamed-character-spacing-0);
   color: var(--unnamed-color-772ce8);
   text-align: center;
@@ -255,4 +226,3 @@ export default {
   float: left;
 }
 </style>
-
