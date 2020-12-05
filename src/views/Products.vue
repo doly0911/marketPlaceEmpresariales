@@ -1,13 +1,13 @@
 <template>
   <div>
     <v-row>
-      <div>
-        
+
+    
+    <v-col cols="3">
+      <div id="divFiltros">
         <v-col id="filtrosMenu">
           <v-card class="mx-auto" max-width="200">
-            <v-card-title class="space-betwen">
-              Filtros
-            </v-card-title>
+            <v-card-title class="space-betwen"> Filtros </v-card-title>
 
             <v-divider></v-divider>
 
@@ -22,10 +22,10 @@
                     </v-list-item-action>
 
                     <v-list-item-content>
-                      <v-list-item-title id="opcionesFiltro">Iphone 11</v-list-item-title>
-                      <v-list-item-subtitle
-                        ></v-list-item-subtitle
+                      <v-list-item-title id="opcionesFiltro"
+                        >Iphone 11</v-list-item-title
                       >
+                      <v-list-item-subtitle></v-list-item-subtitle>
                     </v-list-item-content>
                   </template>
                 </v-list-item>
@@ -37,10 +37,10 @@
                     </v-list-item-action>
 
                     <v-list-item-content>
-                      <v-list-item-title id="opcionesFiltro">Iphone 11 pro</v-list-item-title>
-                      <v-list-item-subtitle
-                        ></v-list-item-subtitle
+                      <v-list-item-title id="opcionesFiltro"
+                        >Iphone 11 pro</v-list-item-title
                       >
+                      <v-list-item-subtitle></v-list-item-subtitle>
                     </v-list-item-content>
                   </template>
                 </v-list-item>
@@ -52,10 +52,10 @@
                     </v-list-item-action>
 
                     <v-list-item-content>
-                      <v-list-item-title id="opcionesFiltro">Iphone 11 pro plus</v-list-item-title>
-                      <v-list-item-subtitle
-                        ></v-list-item-subtitle
+                      <v-list-item-title id="opcionesFiltro"
+                        >Iphone 11 pro plus</v-list-item-title
                       >
+                      <v-list-item-subtitle></v-list-item-subtitle>
                     </v-list-item-content>
                   </template>
                 </v-list-item>
@@ -64,48 +64,61 @@
           </v-card>
         </v-col>
       </div>
+    </v-col>
 
+    <v-col cols="9">
       <!--Recorrer el Array de proveedores que son 3 -->
-      <div v-for="(product, index) in products" v-bind:key="index">
-        <div v-if="product != null">
-          <v-col id="items">
-            <!--Recorrer Los items del vendedor -->
-            <v-card
-              class="mx-auto my-12"
-              max-width="265px"
-              v-for= "item in product.items"
-              v-bind:key="item.id"
-            >
-              <v-img
-                v-bind:src="item.thumbnail"
-                v-on:click="goDetails(index, item.id)"
-              ></v-img>
-              <v-card-text>
-                <!--ESTA ES LA CLASE QUE ME CENTRA TODO -->
-                <div class="text-center">
-                  <v-card-title id="productName" class="space-betwen" >{{
-                    item.name
-                  }}</v-card-title>
-                  <v-card-text id="productBrand" class="space-betwen">{{
-                    item.brand
-                  }}</v-card-text>
-                  <v-row>
-                    <v-col>
-                      <p id="oldPrice">{{ item.price }}</p>
-                    </v-col>
-                    <v-col>
-                      <p id="newPrice">{{ item.price }}</p>
-                    </v-col>
-                  </v-row>
-                  <v-btn rounded color="#772CE8" dark v-on:click="addToCart(index, item.id)">
-                    Agregar al carrito
-                  </v-btn>
-                </div>
-              </v-card-text>
-            </v-card>
-          </v-col>
+      <div id="divProducts">
+        <div v-for="(product, index) in products" v-bind:key="index">
+          <div v-if="product != null">
+            <v-row>
+              <v-col
+                id="items"
+                v-for="item in product.items"
+                v-bind:key="item.id"
+                cols="9"
+                sm="3"
+              >
+                <!--Recorrer Los items del vendedor -->
+                <v-card class="mx-auto my-12" max-width="265px">
+                  <v-img
+                    v-bind:src="item.thumbnail"
+                    v-on:click="goDetails(index, item.id)"
+                  ></v-img>
+                  <v-card-text>
+                    <!--ESTA ES LA CLASE QUE ME CENTRA TODO -->
+                    <div class="text-center">
+                      <v-card-title id="productName" class="space-betwen">{{
+                        item.name
+                      }}</v-card-title>
+                      <v-card-text id="productBrand" class="space-betwen">{{
+                        item.brand
+                      }}</v-card-text>
+                      <v-row>
+                        <v-col>
+                          <p id="oldPrice">{{ item.price }}</p>
+                        </v-col>
+                        <v-col>
+                          <p id="newPrice">{{ item.price }}</p>
+                        </v-col>
+                      </v-row>
+                      <v-btn
+                        rounded
+                        color="#772CE8"
+                        dark
+                        v-on:click="addToCart(index, item.id)"
+                      >
+                        Agregar al carrito
+                      </v-btn>
+                    </div>
+                  </v-card-text>
+                </v-card>
+              </v-col>
+            </v-row>
+          </div>
         </div>
       </div>
+    </v-col>
     </v-row>
   </div>
 </template>
@@ -186,13 +199,20 @@ export default {
   opacity: 1;
 }
 
-#opcionesFiltro{
+#opcionesFiltro {
   font-size: 12px;
 }
 
 #items {
   width: 300px;
   display: inline-block;
+}
+#divProducts {
+  float: left;
+}
+
+#divFiltros {
+  float: left;
 }
 </style>
 
