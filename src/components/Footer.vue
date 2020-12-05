@@ -1,114 +1,71 @@
 <template>
 <div>
+   
+    <div id="webinfo">
+    
     <div>
-  <v-bottom-navigation>
-    <v-btn>
         <v-row>
-            <v-img id="iconos" src="../assets/icon-compras-seguras@2x.png"></v-img>
-            <v-col><v-text>Compras <br> seguras</v-text></v-col>
+            <v-img id="icono1" src="../assets/icon-compras-seguras.svg"></v-img>
+            <v-text id="icotx1">Compras <br> seguras</v-text>
         </v-row>
-    </v-btn>
-    <v-btn>
-        <v-row>
-            <v-img id="iconos" src="../assets/icon-multiples-medios-pago.png"></v-img>
-            <v-col><v-text>Múltiples medios <br> de pago</v-text></v-col>
-        </v-row>
-    </v-btn>
-    <v-btn>
-        <v-row>
-            <v-img id="iconos" src="../assets/icon-calidad-garantizada.png"></v-img>
-            <v-col><v-text>Calidad <br> Garantizada</v-text></v-col>
-        </v-row>
-    </v-btn>
-    <v-btn>
-        <v-row>
-            <v-img id="iconos" src="../assets/icon-envios-todo-elpais.png"></v-img>
-            <v-col><v-text>Enviós a <br> Todo el país</v-text></v-col>
-        </v-row>
-    </v-btn>
-  </v-bottom-navigation>
     </div>
-    <!--Formulario de suscripción-->
+
     <div>
+        <v-row>
+            <v-img id="icono2" src="../assets/icon-multiples-medios-pago.svg"></v-img>
+           <v-text id="icotx1">Múltiples medios <br> de pago</v-text>
+        </v-row>
+    </div>
+    <div>
+        <v-row>
+            <v-img id="icono3" src="../assets/icon-calidad-garantizada.svg" ></v-img>
+           <v-text id="icotx1">Calidad <br> Garantizada</v-text>
+        </v-row>
+    </div>
+    <div>
+        <v-row>
+            <v-img id="icono4" src="../assets/icon-envios-todo-elpais.svg" ></v-img>
+           <v-text id="icotx1">Enviós a <br> Todo el país</v-text>
+          
+        </v-row>
+    </div>
+
+      </div>  
+  
+    <!--Formulario de suscripción-->
+    <div id="subform">
   <v-form
     ref="form"
     v-model="valid"
     lazy-validation
   >
   <v-row>
-      <v-col>
+      <v-col id="infosub">
           <v-row>
-          <v-title>
+          <v-text id="titulosub">
               Suscríbete a nuestro boletín
-          </v-title>
+          </v-text>
           </v-row>
           <v-row>
-              <v-text>Recibe información de nuestras ofertas</v-text>
+              <v-text id="subtitlesubs">Recibe información de nuestras ofertas</v-text>
           </v-row>
       </v-col>
       <v-col>
         <v-row>
-            <v-col><v-inp outlined rounded class="ma-2"></v-inp></v-col>
-            <v-col><v-btn @click="searchProducts" outlined rounded class="ma-2">Buscar</v-btn></v-col>
+          <v-col>
+            <div  >
+
+            <input type="text" id="subs" placeholder="Ingresa tu correo electrónico">
+         
+      
+            </div>
+          </v-col>
+            <v-col><v-btn color="white" outlined rounded class="ma-2">Suscribirse</v-btn></v-col>
         </v-row>
-        
-    
       </v-col>
   </v-row>
   
-    <v-text-field
-      v-model="name"
-      :counter="10"
-      :rules="nameRules"
-      label="Name"
-      required
-    ></v-text-field>
-
-    <v-text-field
-      v-model="email"
-      :rules="emailRules"
-      label="E-mail"
-      required
-    ></v-text-field>
-
-    <v-select
-      v-model="select"
-      :items="items"
-      :rules="[v => !!v || 'Item is required']"
-      label="Item"
-      required
-    ></v-select>
-
-    <v-checkbox
-      v-model="checkbox"
-      :rules="[v => !!v || 'You must agree to continue!']"
-      label="Do you agree?"
-      required
-    ></v-checkbox>
-
-    <v-btn
-      :disabled="!valid"
-      color="success"
-      class="mr-4"
-      @click="validate"
-    >
-      Validate
-    </v-btn>
-
-    <v-btn
-      color="error"
-      class="mr-4"
-      @click="reset"
-    >
-      Reset Form
-    </v-btn>
-
-    <v-btn
-      color="warning"
-      @click="resetValidation"
-    >
-      Reset Validation
-    </v-btn>
+    
   </v-form>
     </div>
     <!--Seccion de links-->
@@ -171,7 +128,79 @@
     </div>
 </div>
 </template>
+
+<!--Estilos-->
+
 <style scope>
+#subtitlesubs{
+  font-size: 18;
+}
+#titulosub{
+  font-weight: bold;
+  font-size: 26px;
+}
+#infosub{ 
+  padding-left: 72px;
+  color: white;
+}
+#icotx1{
+  color: #772CE8;
+}
+#subs{
+  padding-left: 15px;
+  width: 324px;
+height: 38px;
+background: #FFFFFF 0% 0% no-repeat padding-box;
+border: 0.75px solid #FFFFFF;
+border-radius: 19px;
+opacity: 1;
+}
+
+#icono1{
+width: 44px;
+height: 45px;
+background: transparent 0% 0% no-repeat padding-box;
+opacity: 1;
+margin-right: 20px;
+}
+#icono2{
+width: 52px;
+height: 40px;
+background: transparent 0% 0% no-repeat padding-box;
+opacity: 1;
+margin-right: 20px;
+}
+#icono3{
+width: 34px;
+height: 48px;
+background: transparent 0% 0% no-repeat padding-box;
+opacity: 1;
+margin-right: 20px;
+}
+#icono4{
+width: 34px;
+height: 46px;
+background: transparent 0% 0% no-repeat padding-box;
+opacity: 1;
+margin-right: 20px;
+}
+
+#webinfo{
+  height: 123px;
+  background-color: #BDF1FD;
+  display: flex;
+  justify-content: space-around;
+  padding: 40px 0;
+}
+#emailsub{
+  padding: 5px;
+  color: white;
+}
+#subform{
+  height: 128px;
+  background-color: #772CE8;
+  padding: 20px;
+}
 #networkicon{
   margin: auto;
   width: 40px;
@@ -210,9 +239,5 @@ font-family: 'Poppins', sans-serif;
 .v-bottom-navigation{
 justify-content: space-between;
 }
-#iconos{
-    align-items: center;
-    width: 30px;
-    height: 30px;
-}
+
 </style>
