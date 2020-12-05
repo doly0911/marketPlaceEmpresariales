@@ -7,40 +7,9 @@ export default {
 
 
             const data1 = await api.api1.get('api/search?q=' + searchWord)
-            /*
-         const data2 = await api.api2().get(`api/search?q=${searchWord}`)
-         const data3 = await api.api3().get(`api/search?q=${searchWord}`)*/
 
-
-            const data2 = {
-                data: {
-                    query: "",
-                    total: 1,
-                    seller:
-                    {
-                        id: "",
-                        name: "vendedeo 2"
-                    },
-                    items:
-                        [
-                            {
-                                id: 'ID',
-                                name: "Nevera vendedor 2",
-                                brand: "Oster",
-                                thubnail: "URL",
-                                city:
-                                {
-                                    name: "Medellin",
-                                    code: "MED"
-                                },
-                                price: 0.0,
-                                currency: "COP",
-                                rating: 0.0
-                            },
-
-                        ]
-                }
-            }
+            const data2 = await api.api2.get(`django_api/search/?q=${searchWord}`)
+            // const data3 = await api.api3().get(`api/search?q=${searchWord}`)*/
 
             const data3 = {
                 daata: {
