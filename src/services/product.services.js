@@ -6,40 +6,11 @@ export default {
         try {
 
 
-            const data1 = await api.api1.get('api/search?q=' + searchWord)
+            const data1 = await api.api1.get(`api/search?q=${searchWord}`)
 
             const data2 = await api.api2.get(`django_api/search/?q=${searchWord}`)
-            // const data3 = await api.api3().get(`api/search?q=${searchWord}`)*/
-
-            const data3 = {
-                daata: {
-                    query: "televisor",
-                    total: 1,
-                    seller:
-                    {
-                        id: "",
-                        name: "Name"
-                    },
-                    items:
-                        [
-                            {
-                                id: 'ID',
-                                name: "moto vendedor  3",
-                                brand: "Oster",
-                                thubnail: "URL",
-                                city:
-                                {
-                                    name: "Medellin",
-                                    code: "MED"
-                                },
-                                price: 0.0,
-                                currency: "COP",
-                                rating: 0.0
-                            },
-
-                        ]
-                }
-            }
+            
+            const data3 = await api.api3.get(`api/search?q=${searchWord}`)
 
             var products = new Array()
             products.push(data1.data)
@@ -66,7 +37,7 @@ export default {
                 return results.data;
 
             case '2':
-                results = await api.api3.get(`api/item/:${id}`)
+                results = await api.api3.get(`api/item/${id}`)
                 return results.data;
 
             default:
