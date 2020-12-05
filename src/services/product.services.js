@@ -62,7 +62,7 @@ export default {
                 return results.data;
 
             case '1':
-                results = await api.api2.get(`api/item/${id}`)
+                results = await api.api2.get(`django_api/item/${id}`)
                 return results.data;
 
             case '2':
