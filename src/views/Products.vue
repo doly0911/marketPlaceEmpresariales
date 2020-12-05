@@ -3,7 +3,6 @@
     <h1>products</h1>
     <h2>{{ this.search }}</h2>
     <button @click="goDetails('0', 'MCO557060514')">presioname</button>\
-
   </div>
 </template>
 
@@ -19,14 +18,13 @@ export default {
     cart: [],
   }),
 
-
   watch: {
     $route(to, from) {
       if (to !== from) {
         this.search = this.$route.params.search;
       }
     },
-
+  },
   mounted() {
     if (localStorage.getItem("cart")) {
       try {
@@ -38,7 +36,6 @@ export default {
         localStorage.removeItem("cart");
       }
     }
-
   },
 
   async created() {
