@@ -9,7 +9,7 @@ export default {
             const data1 = await api.api1.get(`api/search?q=${searchWord}`)
 
             const data2 = await api.api2.get(`django_api/search/?q=${searchWord}`)
-            
+
             const data3 = await api.api3.get(`api/search?q=${searchWord}`)
 
             var products = new Array()
@@ -25,25 +25,24 @@ export default {
     },
 
     async getProductById(id, keySeller) {
-        let results;
-        switch (keySeller) {
-            case '0':
-                console.log("enntro")
+        try {
+            let results;
+            if (keySeller == '0') {
                 results = await api.api1.get(`api/item/${id}`)
-                return results.data;
-
-            case '1':
+            }
+            if (keySeller == '1') {
                 results = await api.api2.get(`django_api/item/${id}`)
-                return results.data;
-
-            case '2':
+            }
+            if (keySeller == '2') {
                 results = await api.api3.get(`api/item/${id}`)
-                return results.data;
-
-            default:
-
-                break;
+            }
+            return results.data;
+        } catch (error) {
+            console.log("error");
+            console.log(error);
         }
+
+
     }
 
 }
