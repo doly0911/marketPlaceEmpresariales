@@ -66,7 +66,7 @@
               <div>
                 <input
                   type="text"
-                  id="subs"
+                  id="subs1"
                   placeholder="Ingresa tu correo electrónico"
                 />
               </div>
@@ -155,7 +155,7 @@
 #icotx1 {
   color: #772ce8;
 }
-#subs {
+#subs1 {
   padding-left: 15px;
   width: 324px;
   height: 38px;
