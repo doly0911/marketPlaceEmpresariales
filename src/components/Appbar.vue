@@ -5,15 +5,18 @@
         <img id="Logo" src="../assets/oldwave-logo-horizontal.png" alt="logo" />
       </a>
       <v-spacer></v-spacer>
-      <button id="BotonIniciarSesion" class="ma-2">
-        <label id="LetraIniciarSesion">Regístrate o inicia sesión</label>
-      </button>
-      <a class="ma-2">
-        <img id="Login-icon" src="../assets/login-icon.svg" />
-      </a>
-      <a class="ma-2" @click="cart()">
-        <img id="Carrito-icon" src="../assets/carrito-icon.svg" />
-      </a>
+      <div id="center">
+        <button id="BotonIniciarSesion" class="ma-2">
+          <label id="LetraIniciarSesion">Regístrate o inicia sesión</label>
+        </button>
+
+        <a class="ma-2">
+          <img id="Login-icon" src="../assets/login-icon.svg" />
+        </a>
+        <a class="ma-2" @click="cart()">
+          <img id="Carrito-icon" src="../assets/carrito-icon.svg" />
+        </a>
+      </div>
     </v-app-bar>
     <v-app-bar color="#772CE8">
       <div id="center">
@@ -24,9 +27,9 @@
               type="text"
               placeholder="Estoy Buscando"
               v-model="productName"
+              v-on:keyup.enter="searchProducts"
             />
           </div>
-
           <button @click="searchProducts" id="BotonBuscar" class="ml-3 mr-2">
             <label id="LetraBotonBuscar">Buscar</label>
           </button>
@@ -55,10 +58,12 @@ export default {
     searchProducts() {
       //Hay que controlar cuando ya se esta en la ventana Productos
       let product = this.productName;
-      this.$router.push({
-        name: "Products",
-        params: { search: product },
-      });
+      if (product != "") {
+        this.$router.push({
+          name: "Products",
+          params: { search: product },
+        });
+      }
     },
     cart() {
       this.$router.push({
