@@ -78,6 +78,7 @@ export default {
       this.idProduct,
       this.idSeller
     );
+    console.log(products);
     this.product = products;
   },
 
