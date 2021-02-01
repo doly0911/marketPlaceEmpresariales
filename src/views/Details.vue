@@ -16,7 +16,7 @@
       </v-col>
       <v-col style="margin: auto">
         <div class="ma-2">
-          <h1>{{ this.product.name }}</h1>
+          <h1 id="title">{{ this.product.name }}</h1>
           <br />
           <h3>Marca: {{ this.product.brand }}</h3>
           <br />
@@ -25,7 +25,7 @@
           <h2>Descripción</h2>
           <h5 style="font-weight: normal">{{ this.product.description }}</h5>
           <br />
-          <h5 style="font-weight: normal">
+          <h5 style="font-weight: normal" id="price">
             Precio: $ {{ formatPrice(this.product.price)
             }}{{ this.product.currency }}
           </h5>
@@ -38,7 +38,13 @@
             large
           ></v-rating>
           <br />
-          <v-btn rounded color="#772CE8" dark v-on:click="addToCart()">
+          <v-btn
+            id="addToCart"
+            rounded
+            color="#772CE8"
+            dark
+            v-on:click="addToCart()"
+          >
             Agregar al carrito
           </v-btn>
         </div>
@@ -91,7 +97,10 @@ export default {
     addToCart: function () {
       let idSeller = this.$route.params.idSeller;
       let idProduct = this.$route.params.id;
-      let product = { idSeller, idProduct };
+      let name = this.product.name;
+      let image = this.product.pictures[0] ? this.product.pictures[0] : "";
+      let price = this.product.price;
+      let product = { idSeller, idProduct, name, image, price };
       console.log(this.cart.includes(product));
       if (this.cart.indexOf(product) == -1) {
         this.cart.push(product);

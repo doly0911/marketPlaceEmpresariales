@@ -110,8 +110,8 @@
                         <v-card-text>
                           Seller: {{ product.seller.name }}
                         </v-card-text>
-
                         <v-btn
+                        id="addCart"
                           rounded
                           color="#772CE8"
                           dark
