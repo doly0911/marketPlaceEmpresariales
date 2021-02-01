@@ -2,21 +2,54 @@
   <v-container>
     <h1 id="TituloCarrito">Carrito de Compras</h1>
     <v-card id="Card">
-      <v-row v-bind:key="index" v-for="(item,index) in cart" cols="12" sm="3">
+      <v-row
+        class="separo"
+        v-bind:key="index"
+        v-for="(item, index) in cart"
+        cols="12"
+        sm="3"
+        width="500px"
+      >
         <v-list two-line>
           <v-list-item>
             <v-list-item-avatar rounded size="100">
               <img :src="item.image" />
             </v-list-item-avatar>
-            <v-list-item-content>
-              <v-list-item-title v-html="item.name"></v-list-item-title>
-              <v-list-item-subtitle v-html="item.price"></v-list-item-subtitle>
-            </v-list-item-content>
-            <v-btn elevation="2" @click="deleteItem(index)" rounded>Eliminar</v-btn>
+            <v-row class="datos">
+              <v-list-item-content>
+                <v-col>
+                  <v-list-item-title
+                    class="name"
+                    v-html="item.name"
+                  ></v-list-item-title>
+                </v-col>
+                <v-col>
+                  <v-list-item-subtitle
+                    class="price"
+                    v-html="item.price"
+                  ></v-list-item-subtitle>
+                </v-col>
+              </v-list-item-content>
+
+              <v-btn
+                class="delete"
+                color="#772ce8"
+                elevation="2"
+                @click="deleteItem(index)"
+                rounded
+                ><v-icon color="white">mdi-delete</v-icon> Eliminar</v-btn
+              >
+            </v-row>
           </v-list-item>
         </v-list>
       </v-row>
     </v-card>
+    <v-row class="compra">
+      <v-text></v-text>
+      <v-btn class="buy" color="#772ce8" elevation="2" margin="20px" rounded
+        ><v-icon color="white">mdi-cash</v-icon> Comprar</v-btn
+      >
+    </v-row>
   </v-container>
 </template>
 
@@ -27,11 +60,11 @@ export default {
     cart: [],
   }),
   methods: {
-    deleteItem: function(index) {
-      this.cart.splice(index,1);
+    deleteItem: function (index) {
+      this.cart.splice(index, 1);
       const parsed = JSON.stringify(this.cart);
       localStorage.setItem("cart", parsed);
-    }
+    },
   },
 
   mounted() {
@@ -65,5 +98,59 @@ export default {
 #Card {
   margin: auto;
   padding-left: 15px;
+  width: 1200px;
+  justify-content: space-between;
+  font: var(--unnamed-font-style-normal) normal bold 14px/21px
+    var(--unnamed-font-family-poppins);
+}
+.name {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  width: 800px;
+  margin-right: 50px;
+  font: var(--unnamed-font-style-normal) normal bold 14px/21px
+    var(--unnamed-font-family-poppins);
+}
+.price {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  font: var(--unnamed-font-style-normal) normal bold 14px/21px
+    var(--unnamed-font-family-poppins);
+}
+.separo {
+  display: flex;
+  justify-content: space-between;
+  font: var(--unnamed-font-style-normal) normal bold 14px/21px
+    var(--unnamed-font-family-poppins);
+}
+.row {
+  margin-right: 0;
+}
+v-btn {
+  color: #772ce8;
+  background-color: #772ce8;
+  font: var(--unnamed-font-style-normal) normal bold 14px/21px
+    var(--unnamed-font-family-poppins);
+}
+.delete {
+  color: white;
+  font: var(--unnamed-font-style-normal) normal bold 14px/21px
+    var(--unnamed-font-family-poppins);
+}
+.buy {
+  color: white;
+  margin: 20px;
+  display: flex;
+  font: var(--unnamed-font-style-normal) normal bold 14px/21px
+    var(--unnamed-font-family-poppins);
+}
+.compra {
+  display: flex;
+  justify-content: space-between;
+  text-align: center;
+  font: var(--unnamed-font-style-normal) normal bold 14px/21px
+    var(--unnamed-font-family-poppins);
 }
 </style>
