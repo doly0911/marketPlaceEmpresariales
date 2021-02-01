@@ -80,6 +80,7 @@
                   <!--Recorrer Los items del vendedor -->
                   <v-card class="mx-auto my-12" width="265px" height="600px">
                     <v-img
+                      id="productImage"
                       v-bind:src="item.thumbnail"
                       v-on:click="goDetails(seller, item.id)"
                     ></v-img>
@@ -102,17 +103,24 @@
                         </v-row>
                         <v-card-text> Rating: {{ item.rating }} </v-card-text>
                         <v-card-text> Seller: {{ seller }} </v-card-text>
-                       
 
                         <v-btn
+                        id="addCart"
                           rounded
                           color="#772CE8"
                           dark
-                          v-on:click="addToCart(index, item.id,item.name,item.thumbnail, item.price)"
+                          v-on:click="
+                            addToCart(
+                              index,
+                              item.id,
+                              item.name,
+                              item.thumbnail,
+                              item.price
+                            )
+                          "
                         >
                           Agregar al carrito
                         </v-btn>
-
                       </div>
                     </v-card-text>
                   </v-card>
@@ -176,7 +184,7 @@ export default {
       });
     },
 
-    addToCart: function (idSeller, idProduct , name, image, price) {
+    addToCart: function (idSeller, idProduct, name, image, price) {
       let product = { idSeller, idProduct, name, image, price };
       console.log(this.cart.includes(product));
       if (this.cart.indexOf(product) == -1) {
