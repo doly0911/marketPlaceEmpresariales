@@ -81,7 +81,7 @@
                   <v-card class="mx-auto my-12" width="265px" height="600px">
                     <v-img
                       v-bind:src="item.thumbnail"
-                      v-on:click="goDetails(index, item.id)"
+                      v-on:click="goDetails(seller, item.id)"
                     ></v-img>
                     <v-card-text>
                       <!--ESTA ES LA CLASE QUE ME CENTRA TODO -->
@@ -102,14 +102,13 @@
                         </v-row>
                         <v-card-text> Rating: {{ item.rating }} </v-card-text>
                         <v-card-text> Seller: {{ seller }} </v-card-text>
-                        <!--<v-card-text v-if="{ {seller} } == 0">
-                          Seller:node </v-card-text>-->
+                       
 
                         <v-btn
                           rounded
                           color="#772CE8"
                           dark
-                          v-on:click="addToCart(index, item.id)"
+                          v-on:click="addToCart(index, item.id,item.name,item.thumbnail, item.price)"
                         >
                           Agregar al carrito
                         </v-btn>
