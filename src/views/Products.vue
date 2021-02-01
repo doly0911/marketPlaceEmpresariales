@@ -280,10 +280,6 @@ export default {
   font-size: 12px;
 }
 
-#items {
-  /* width: 400px;
-  display: inline-block; */
-}
 
 #divFiltros {
   float: left;

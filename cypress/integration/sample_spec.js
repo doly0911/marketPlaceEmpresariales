@@ -9,7 +9,7 @@ describe('test for view functionality of search and details', () => {
     })
 
     it('test to view the details', () => {
-        cy.get('#productImage:first').click()
+        cy.get('#smallThumbnail:first').click()
     })
 
     it('test to validate data of details', () => {
@@ -31,7 +31,7 @@ describe('test for carrito', () => {
 
     it('test to add to cart from details view ', () => {
         cy.clearLocalStorage()
-        cy.get('#productImage:first').click()
+        cy.get('#smallThumbnail:first').click()
         cy.get('#addToCart:first').click().should(() => {
             expect(localStorage.getItem('cart')).to.exist
         })
