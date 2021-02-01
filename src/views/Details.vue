@@ -6,11 +6,12 @@
           <v-carousel-item
             v-for="(item, i) in product.pictures"
             :key="i"
-            :src="item"
             reverse-transition="fade-transition"
             transition="fade-transition"
-            style="max-width: 600px"
-          ></v-carousel-item>
+            style="width:auto;object-fit:cover" 
+          >
+          <img :src="item" style="width:auto;height:auto"/>
+          </v-carousel-item>
         </v-carousel>
       </v-col>
       <v-col style="margin: auto">
@@ -102,5 +103,3 @@ export default {
 };
 </script>
 
-<style>
-</style>

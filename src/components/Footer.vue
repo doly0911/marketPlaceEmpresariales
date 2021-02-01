@@ -72,7 +72,7 @@
               </div>
             </v-col>
             <v-col
-              ><v-btn color="white" outlined rounded class="ma-2"
+              ><v-btn  color="white" outlined rounded class="ma-2"
                 >Suscribirse</v-btn
               ></v-col
             >
@@ -109,17 +109,8 @@
           </v-row>
           <v-row>
             <p id="titletext">Redes Sociales</p>
-          </v-row>
-          <v-row>
-            <v-col
-              ><v-img id="networkicon" src="../assets/icon-facebook.png"></v-img
-            ></v-col>
-            <v-col
-              ><v-img
-                id="networkicon"
-                src="../assets/icon-instagram.png"
-              ></v-img
-            ></v-col>
+            <v-img id="networkicon" src="../assets/icon-facebook.png"></v-img>
+            <v-img id="networkicon" src="../assets/icon-instagram.png"> </v-img>
           </v-row>
         </v-col>
       </v-row>
@@ -212,7 +203,7 @@
 }
 #networkicon {
   margin: auto;
-  width: 40px;
+  max-width: 40px;
 }
 #logolink {
   margin: auto;

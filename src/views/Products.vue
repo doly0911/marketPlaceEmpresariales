@@ -74,12 +74,12 @@
                   id="items"
                   v-for="item in product.items"
                   v-bind:key="item.id"
-                  cols="9"
-                  sm="3"
+                  cols="auto"
                 >
                   <!--Recorrer Los items del vendedor -->
-                  <v-card class="mx-auto my-12" width="265px" height="600px">
+                  <v-card class="mx-auto" max-width="344" min-height="380">
                     <v-img
+                      id="smallThumbnail"
                       v-bind:src="item.thumbnail"
                       v-on:click="goDetails(seller, item.id)"
                     ></v-img>
@@ -100,19 +100,33 @@
                             <p id="newPrice" class="price">{{ item.price }}</p>
                           </v-col>
                         </v-row>
-                        <v-card-text> Rating: {{ item.rating }} </v-card-text>
-                        <v-card-text> Seller: {{ seller }} </v-card-text>
-                       
+                        <v-rating
+                          :value="item.rating"
+                          background-color="#772CE8"
+                          color="#772CE8"
+                          readonly
+                          medium
+                        ></v-rating>
+                        <v-card-text>
+                          Seller: {{ product.seller.name }}
+                        </v-card-text>
 
                         <v-btn
                           rounded
                           color="#772CE8"
                           dark
-                          v-on:click="addToCart(index, item.id,item.name,item.thumbnail, item.price)"
+                          v-on:click="
+                            addToCart(
+                              index,
+                              item.id,
+                              item.name,
+                              item.thumbnail,
+                              item.price
+                            )
+                          "
                         >
                           Agregar al carrito
                         </v-btn>
-
                       </div>
                     </v-card-text>
                   </v-card>
@@ -176,7 +190,7 @@ export default {
       });
     },
 
-    addToCart: function (idSeller, idProduct , name, image, price) {
+    addToCart: function (idSeller, idProduct, name, image, price) {
       let product = { idSeller, idProduct, name, image, price };
       console.log(this.cart.includes(product));
       if (this.cart.indexOf(product) == -1) {
@@ -184,12 +198,18 @@ export default {
         const parsed = JSON.stringify(this.cart);
         localStorage.setItem("cart", parsed);
       }
+      alert("Se ha añadido el producto al carrito")
     },
   },
 };
 </script>
 
 <style scoped>
+#smallThumbnail {
+  margin: auto;
+  height: 170px;
+  max-width: 200px;
+}
 #productBrand {
   font: var(--unnamed-font-style-bold) bold var(--unnamed-font-weight-600) 12px/18px
     var(--unnamed-font-family-poppins);
@@ -199,7 +219,7 @@ export default {
   letter-spacing: 0px;
   color: #772ce8;
   opacity: 1;
-  font-size: 12px;
+  font-size: 14px;
   font-weight: bold;
 }
 #productName {
@@ -245,6 +265,7 @@ export default {
   border: 1px solid #e2e2e2;
   border-radius: 8px;
   opacity: 1;
+  min-width: 250px;
 }
 
 #card-text {
@@ -253,7 +274,6 @@ export default {
   overflow: hidden;
   max-width: 250px;
   text-align: center;
-  margin: 0;
 }
 
 #opcionesFiltro {
@@ -261,11 +281,8 @@ export default {
 }
 
 #items {
-  width: 300px;
-  display: inline-block;
-}
-#divProducts {
-  float: left;
+  /* width: 400px;
+  display: inline-block; */
 }
 
 #divFiltros {
@@ -290,6 +307,11 @@ export default {
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
+}
+#smallCard {
+  min-width: 230px;
+
+  height: 500px;
 }
 </style>
 
