@@ -280,7 +280,6 @@ export default {
   font-size: 12px;
 }
 
-
 #divFiltros {
   float: left;
 }
