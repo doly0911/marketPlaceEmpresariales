@@ -113,6 +113,7 @@
                         >
                           Agregar al carrito
                         </v-btn>
+
                       </div>
                     </v-card-text>
                   </v-card>
@@ -176,8 +177,8 @@ export default {
       });
     },
 
-    addToCart: function (idSeller, idProduct) {
-      let product = { idSeller, idProduct };
+    addToCart: function (idSeller, idProduct , name, image, price) {
+      let product = { idSeller, idProduct, name, image, price };
       console.log(this.cart.includes(product));
       if (this.cart.indexOf(product) == -1) {
         this.cart.push(product);

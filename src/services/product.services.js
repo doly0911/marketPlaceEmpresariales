@@ -29,22 +29,22 @@ export default {
                     [
                         {
                             id: 2131,
-                            name: "Nevera",
-                            brand: "Oster",
+                            name: "Mega nevera con pantalla y parlante de costeño",
+                            brand: "Neveras el pibe",
                             thumbnail: "https://images.pexels.com/photos/3208624/pexels-photo-3208624.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
                             city:
                             {
                                 name: "Medellin",
                                 code: "MED"
                             },
-                            price: 1000.0000,
+                            price: 1000.00001000000010000000,
                             currency: "COP",
                             rating: 3.0
                         },
                         {
                             id: 2131,
-                            name: "Nevera",
-                            brand: "Oster",
+                            name: "Neveritas felices para pequeños espacios",
+                            brand: "Las chiquis",
                             thumbnail: "https://images.pexels.com/photos/3208624/pexels-photo-3208624.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
                             city:
                             {
@@ -71,8 +71,8 @@ export default {
                         },
                         {
                             id: 2131,
-                            name: "Nevera",
-                            brand: "Oster",
+                            name: "El himalaya",
+                            brand: "Frio frio",
                             thumbnail: "https://images.pexels.com/photos/3208624/pexels-photo-3208624.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
                             city:
                             {

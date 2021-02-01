@@ -58,6 +58,7 @@ export default {
     searchProducts() {
       //Hay que controlar cuando ya se esta en la ventana Productos
       let product = this.productName;
+      this.productName = "";
       if (product != "") {
         this.$router.push({
           name: "Products",
@@ -66,11 +67,13 @@ export default {
       }
     },
     cart() {
+      this.productName = "";
       this.$router.push({
         name: "Cart",
       });
     },
     home() {
+      this.productName = "";
       this.$router.push({
         name: "Home",
       });
@@ -111,13 +114,12 @@ export default {
   opacity: 1;
 }
 #subs {
-  top: 89px;
-  left: 80px;
+  padding-left: 15px;
   width: 944px;
   height: 36px;
-  background: var(--unnamed-color-f7f7f7) 0% 0% no-repeat padding-box;
-  background: #f7f7f7 0% 0% no-repeat padding-box;
-  border-radius: 18px;
+  background: #ffffff 0% 0% no-repeat padding-box;
+  border: 0.75px solid #ffffff;
+  border-radius: 19px;
   opacity: 1;
 }
 #BotonBuscar {
