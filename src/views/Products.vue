@@ -64,7 +64,7 @@
         </div>
       </v-col>
 
-      <v-col cols="9" class="ma-5">
+      <v-col cols="9" class="mt-5">
         <!--Recorrer el Array de proveedores que son 3 -->
         <div id="divProducts">
           <div v-for="(product, seller) in products" v-bind:key="seller">
