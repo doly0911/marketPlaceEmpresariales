@@ -1,70 +1,82 @@
 <template>
   <div>
     <v-row>
+      <!-- Filtros -->
       <v-col cols="3">
         <div id="divFiltros">
-          <v-col id="filtrosMenu">
-            <v-card class="mx-auto" max-width="200">
-              <v-card-title class="space-betwen"> Filtros </v-card-title>
+          <v-col>
+            <!-- <v-card class="mx-auto mb-4" max-width="200"> -->
+            <v-card-title class="space-betwen"> Filtros </v-card-title>
 
-              <v-divider></v-divider>
+            <v-divider></v-divider>
 
-              <v-list flat subheader three-line>
-                <v-subheader>Tipos de Producto</v-subheader>
+            <v-list flat subheader tile>
+              <v-subheader>Tipo de Producto</v-subheader>
+              <v-list-item-group>
+                <v-list-item>
+                  <v-checkbox></v-checkbox>
+                  <v-list-item-title id="opcionesFiltro">
+                    Iphone 11
+                  </v-list-item-title>
+                </v-list-item>
+                <v-list-item>
+                  <v-checkbox></v-checkbox>
+                  <v-list-item-title id="opcionesFiltro">
+                    Iphone 11 pro
+                  </v-list-item-title>
+                </v-list-item>
+                <v-list-item>
+                  <v-checkbox></v-checkbox>
+                  <v-list-item-title id="opcionesFiltro">
+                    Iphone 11 pro plus
+                  </v-list-item-title>
+                </v-list-item>
+              </v-list-item-group>
 
-                <v-list-item-group>
-                  <v-list-item>
-                    <template v-slot:default="{ active }">
-                      <v-list-item-action>
-                        <v-checkbox :input-value="active"></v-checkbox>
-                      </v-list-item-action>
+              <v-subheader>Marcas</v-subheader>
+              <v-list-item-group>
+                <v-list-item>
+                  <v-checkbox></v-checkbox>
+                  <v-list-item-title id="opcionesFiltro">
+                    Iphone
+                  </v-list-item-title>
+                </v-list-item>
+                <v-list-item>
+                  <v-checkbox></v-checkbox>
+                  <v-list-item-title id="opcionesFiltro">
+                    Apple
+                  </v-list-item-title>
+                </v-list-item>
+              </v-list-item-group>
 
-                      <v-list-item-content>
-                        <v-list-item-title id="opcionesFiltro">
-                          Iphone 11
-                        </v-list-item-title>
-                        <v-list-item-subtitle></v-list-item-subtitle>
-                      </v-list-item-content>
-                    </template>
-                  </v-list-item>
-
-                  <v-list-item>
-                    <template v-slot:default="{ active }">
-                      <v-list-item-action>
-                        <v-checkbox :input-value="active"></v-checkbox>
-                      </v-list-item-action>
-
-                      <v-list-item-content>
-                        <v-list-item-title id="opcionesFiltro">
-                          Iphone 11 pro
-                        </v-list-item-title>
-                        <v-list-item-subtitle></v-list-item-subtitle>
-                      </v-list-item-content>
-                    </template>
-                  </v-list-item>
-
-                  <v-list-item>
-                    <template v-slot:default="{ active }">
-                      <v-list-item-action>
-                        <v-checkbox :input-value="active"></v-checkbox>
-                      </v-list-item-action>
-
-                      <v-list-item-content>
-                        <v-list-item-title id="opcionesFiltro">
-                          Iphone 11 pro plus
-                        </v-list-item-title>
-                        <v-list-item-subtitle></v-list-item-subtitle>
-                      </v-list-item-content>
-                    </template>
-                  </v-list-item>
-                </v-list-item-group>
-              </v-list>
-            </v-card>
+              <v-subheader>Estado</v-subheader>
+              <v-list-item-group>
+                <v-list-item>
+                  <v-checkbox></v-checkbox>
+                  <v-list-item-title id="opcionesFiltro">
+                    Perfecto estado
+                  </v-list-item-title>
+                </v-list-item>
+                <v-list-item>
+                  <v-checkbox></v-checkbox>
+                  <v-list-item-title id="opcionesFiltro">
+                    Buen estado
+                  </v-list-item-title>
+                </v-list-item>
+                <v-list-item>
+                  <v-checkbox></v-checkbox>
+                  <v-list-item-title id="opcionesFiltro">
+                    Usado
+                  </v-list-item-title>
+                </v-list-item>
+              </v-list-item-group>
+            </v-list>
+            <!-- </v-card> -->
           </v-col>
         </div>
       </v-col>
 
-      <v-col cols="9" class="mt-5">
+      <v-col cols="9" class="mt-5 mb-5">
         <!--Recorrer el Array de proveedores que son 3 -->
         <div id="divProducts">
           <div v-for="(product, seller) in products" v-bind:key="seller">
@@ -291,7 +303,8 @@ export default {
 }
 
 #divFiltros {
-  float: left;
+  align-content: center;
+  margin-left:40px;
 }
 .price {
   text-overflow: ellipsis;
@@ -317,6 +330,13 @@ export default {
   min-width: 230px;
 
   height: 500px;
+}
+#item {
+  margin: 0px;
+  display: flex;
+}
+::v-deep .v-list-item {
+  margin: 0;
 }
 </style>
 

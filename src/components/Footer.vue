@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="">
     <div id="webinfo">
       <div>
         <v-row>
@@ -72,7 +72,7 @@
               </div>
             </v-col>
             <v-col
-              ><v-btn  color="white" outlined rounded class="ma-2"
+              ><v-btn color="white" outlined rounded class="ma-2"
                 >Suscribirse</v-btn
               ></v-col
             >
@@ -81,7 +81,7 @@
       </v-row>
     </div>
     <!--Seccion de links-->
-    <div class="ma-5">
+    <div class="ma-5 mt-6">
       <v-row>
         <v-col>
           <v-img id="logolink" src="../assets/logo-oldwave-header.png"></v-img>
@@ -109,6 +109,8 @@
           </v-row>
           <v-row>
             <p id="titletext">Redes Sociales</p>
+          </v-row>
+          <v-row>
             <v-img id="networkicon" src="../assets/icon-facebook.png"></v-img>
             <v-img id="networkicon" src="../assets/icon-instagram.png"> </v-img>
           </v-row>
@@ -202,7 +204,7 @@
   padding: 20px;
 }
 #networkicon {
-  margin: auto;
+  margin-right:10px;
   max-width: 40px;
 }
 #logolink {
