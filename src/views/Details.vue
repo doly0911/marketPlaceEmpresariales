@@ -1,5 +1,5 @@
 <template>
-  <div v-if="this.product != ''" id="details">
+  <div class="ma-5" v-if="this.product != ''" id="details">
     <v-row>
       <v-col>
         <v-carousel style="max-width: 600px; margin: auto">

@@ -81,7 +81,7 @@
       </v-row>
     </div>
     <!--Seccion de links-->
-    <div>
+    <div class="ma-5">
       <v-row>
         <v-col>
           <v-img id="logolink" src="../assets/logo-oldwave-header.png"></v-img>

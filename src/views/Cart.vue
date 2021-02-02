@@ -1,7 +1,7 @@
 <template>
   <v-container>
     <h1 id="TituloCarrito">Carrito de Compras</h1>
-    <v-card id="Card">
+    <v-card id="Card" class="ma-4">
       <v-row
         class="separo"
         v-bind:key="index"
