@@ -1,39 +1,45 @@
 <template>
   <div>
     <v-app-bar>
-      <a class="ml-10" @click="home()" >
+      <a class="ml-10" @click="home()">
         <img id="Logo" src="../assets/oldwave-logo-horizontal.png" alt="logo" />
       </a>
       <v-spacer></v-spacer>
-      <button id="BotonIniciarSesion" class="ma-2">
-        <label id="LetraIniciarSesion">Regístrate o inicia sesión</label>
-      </button>
-      <a class="ma-2">
-        <img id="Login-icon" src="../assets/login-icon.svg" />
-      </a>
-      <a class="ma-2" @click="cart()">
-        <img id="Carrito-icon" src="../assets/carrito-icon.svg" />
-      </a>
+      <div id="center">
+        <button id="BotonIniciarSesion" class="ma-2">
+          <label id="LetraIniciarSesion">Regístrate o inicia sesión</label>
+        </button>
+
+        <a class="ma-2">
+          <img id="Login-icon" src="../assets/login-icon.svg" />
+        </a>
+        <a class="ma-2" @click="cart()">
+          <img id="Carrito-icon" src="../assets/carrito-icon.svg" />
+        </a>
+      </div>
     </v-app-bar>
     <v-app-bar color="#772CE8">
-      <v-text-field
-        dark
-        rounded
-        outlined
-        prepend-inner-icon="mdi-magnify"
-        v-model="productName"
-      >
-        <label id="EstoyBuscando">Estoy Buscando</label>
-      </v-text-field>
+      <div id="center">
+        <v-row>
+          <div>
+            <input
+              id="subs"
+              type="text"
+              placeholder="Estoy Buscando"
+              v-model="productName"
+              v-on:keyup.enter="searchProducts"
+            />
+          </div>
+          <button @click="searchProducts" id="BotonBuscar" class="ml-3 mr-2">
+            <label id="LetraBotonBuscar">Buscar</label>
+          </button>
 
-      <button @click="searchProducts" id="BotonBuscar" class="ma-2">
-        <label id="LetraBotonBuscar">Buscar</label>
-      </button>
-
-      <button id="BotonFiltros" class="ma-2">
-        <img src="../assets/icon-filter.svg" class="mr-2" />
-        <label id="LetraBotonFiltros">Filtros</label>
-      </button>
+          <button id="BotonFiltros">
+            <img src="../assets/icon-filter.svg" class="ml-2 mr-2" />
+            <label id="LetraBotonFiltros">Filtros</label>
+          </button>
+        </v-row>
+      </div>
     </v-app-bar>
   </div>
 </template>
@@ -52,17 +58,22 @@ export default {
     searchProducts() {
       //Hay que controlar cuando ya se esta en la ventana Productos
       let product = this.productName;
-      this.$router.push({
-        name: "Products",
-        params: { search: product },
-      });
+      this.productName = "";
+      if (product != "") {
+        this.$router.push({
+          name: "Products",
+          params: { search: product },
+        });
+      }
     },
     cart() {
+      this.productName = "";
       this.$router.push({
         name: "Cart",
       });
     },
     home() {
+      this.productName = "";
       this.$router.push({
         name: "Home",
       });
@@ -72,6 +83,12 @@ export default {
 </script>
 
 <style scoped>
+#categorias {
+  margin: left;
+}
+#center {
+  margin: auto;
+}
 #Logo {
   top: 20px;
   left: 72px;
@@ -96,21 +113,14 @@ export default {
   background: transparent 0% 0% no-repeat padding-box;
   opacity: 1;
 }
-#EstoyBuscando {
-  top: 96px;
-  left: 129px;
-  width: 128px;
-  height: 21px;
-  font: var(--unnamed-font-style-normal) normal
-    var(--unnamed-font-weight-normal) 15px/23px
-    var(--unnamed-font-family-poppins);
-  letter-spacing: var(--unnamed-character-spacing-0);
-  color: var(--unnamed-color-3b3b3b);
-  text-align: left;
-  font: normal normal normal 15px/23px Poppins;
-  letter-spacing: 0px;
-  color: #3b3b3b;
-  opacity: 0.17;
+#subs {
+  padding-left: 15px;
+  width: 944px;
+  height: 36px;
+  background: #ffffff 0% 0% no-repeat padding-box;
+  border: 0.75px solid #ffffff;
+  border-radius: 19px;
+  opacity: 1;
 }
 #BotonBuscar {
   top: 89px;

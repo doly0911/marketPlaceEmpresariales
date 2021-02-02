@@ -20,7 +20,9 @@
                       </v-list-item-action>
 
                       <v-list-item-content>
-                        <v-list-item-title id="opcionesFiltro">Iphone 11</v-list-item-title>
+                        <v-list-item-title id="opcionesFiltro">
+                          Iphone 11
+                        </v-list-item-title>
                         <v-list-item-subtitle></v-list-item-subtitle>
                       </v-list-item-content>
                     </template>
@@ -33,7 +35,9 @@
                       </v-list-item-action>
 
                       <v-list-item-content>
-                        <v-list-item-title id="opcionesFiltro">Iphone 11 pro</v-list-item-title>
+                        <v-list-item-title id="opcionesFiltro">
+                          Iphone 11 pro
+                        </v-list-item-title>
                         <v-list-item-subtitle></v-list-item-subtitle>
                       </v-list-item-content>
                     </template>
@@ -46,7 +50,9 @@
                       </v-list-item-action>
 
                       <v-list-item-content>
-                        <v-list-item-title id="opcionesFiltro">Iphone 11 pro plus</v-list-item-title>
+                        <v-list-item-title id="opcionesFiltro">
+                          Iphone 11 pro plus
+                        </v-list-item-title>
                         <v-list-item-subtitle></v-list-item-subtitle>
                       </v-list-item-content>
                     </template>
@@ -58,30 +64,75 @@
         </div>
       </v-col>
 
-      <v-col cols="9">
+      <v-col cols="9" class="ma-5">
         <!--Recorrer el Array de proveedores que son 3 -->
         <div id="divProducts">
-          <div v-for="(product, index) in products" v-bind:key="index">
+          <div v-for="(product, seller) in products" v-bind:key="seller">
             <div v-if="product != null">
               <v-row>
-                <v-col id="items" v-for="item in product.items" v-bind:key="item.id" cols="9" sm="3">
+                <v-col
+                  id="items"
+                  v-for="item in product.items"
+                  v-bind:key="item.id"
+                  cols="auto"
+                >
                   <!--Recorrer Los items del vendedor -->
-                  <v-card class="mx-auto my-12" max-width="265px">
-                    <v-img v-bind:src="item.thumbnail" v-on:click="goDetails(index, item.id)"></v-img>
+                  <v-card class="mx-auto" max-width="344" min-height="380">
+                    <v-img
+                      id="smallThumbnail"
+                      v-bind:src="item.thumbnail"
+                      v-on:click="goDetails(seller, item.id)"
+                    ></v-img>
                     <v-card-text>
                       <!--ESTA ES LA CLASE QUE ME CENTRA TODO -->
-                      <div class="text-center">
-                        <v-card-title id="productName" class="space-betwen">{{ item.name }}</v-card-title>
-                        <v-card-text id="productBrand" class="space-betwen">{{ item.brand }}</v-card-text>
+                      <div class="text-center" id="card-text">
+                        <v-card-title id="productName" class="product">
+                          {{ item.name }}
+                        </v-card-title>
+                        <v-card-text id="productBrand" class="brand">
+                          {{ item.brand }}
+                        </v-card-text>
                         <v-row>
                           <v-col>
-                            <p id="oldPrice">{{ item.price }}</p>
-                          </v-col>
-                          <v-col>
-                            <p id="newPrice">{{ item.price }}</p>
+                            <p id="oldPrice" class="price">
+                              ${{ formatPrice(item.price) }}
+                            </p>
                           </v-col>
                         </v-row>
-                        <v-btn rounded color="#772CE8" dark v-on:click="addToCart(index, item.id)"> Agregar al carrito </v-btn>
+                        <v-row>
+                          <v-col>
+                            <p id="newPrice" class="price">
+                              ${{ formatPrice(item.price) }}
+                            </p>
+                          </v-col>
+                        </v-row>
+                        <v-rating
+                          :value="item.rating"
+                          background-color="#772CE8"
+                          color="#772CE8"
+                          readonly
+                          medium
+                        ></v-rating>
+                        <v-card-text>
+                          Seller: {{ product.seller.name }}
+                        </v-card-text>
+                        <v-btn
+                          id="addCart"
+                          rounded
+                          color="#772CE8"
+                          dark
+                          v-on:click="
+                            addToCart(
+                              index,
+                              item.id,
+                              item.name,
+                              item.thumbnail,
+                              item.price
+                            )
+                          "
+                        >
+                          Agregar al carrito
+                        </v-btn>
                       </div>
                     </v-card-text>
                   </v-card>
@@ -134,6 +185,10 @@ export default {
   },
 
   methods: {
+    formatPrice(value) {
+      let val = (value / 1).toFixed(2).replace(".", ",");
+      return val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+    },
     reload: async function () {
       this.search = this.$route.params.search;
       this.products = await productServices.getProducts(this.search);
@@ -145,36 +200,45 @@ export default {
       });
     },
 
-    addToCart: function (idSeller, idProduct) {
-      let product = { idSeller, idProduct };
+    addToCart: function (idSeller, idProduct, name, image, price) {
+      let product = { idSeller, idProduct, name, image, price };
       console.log(this.cart.includes(product));
       if (this.cart.indexOf(product) == -1) {
         this.cart.push(product);
         const parsed = JSON.stringify(this.cart);
         localStorage.setItem("cart", parsed);
       }
+      alert("Se ha añadido el producto al carrito");
     },
   },
 };
 </script>
 
 <style scoped>
+#smallThumbnail {
+  margin: auto;
+  height: 170px;
+  max-width: 200px;
+}
 #productBrand {
-  font: var(--unnamed-font-style-bold) bold var(--unnamed-font-weight-600) 12px/18px var(--unnamed-font-family-poppins);
+  font: var(--unnamed-font-style-bold) bold var(--unnamed-font-weight-600) 12px/18px
+    var(--unnamed-font-family-poppins);
   letter-spacing: var(--unnamed-character-spacing-0);
   color: var(--unnamed-color-772ce8);
   font: bold bold 600 12px;
   letter-spacing: 0px;
   color: #772ce8;
   opacity: 1;
-  font-size: 12px;
+  font-size: 14px;
   font-weight: bold;
 }
 #productName {
-  font: var(--unnamed-font-style-normal) normal var(--unnamed-font-weight-medium) var(--unnamed-font-size-13) / 16px var(--unnamed-font-family-poppins);
+  display: inline-block;
+  font: var(--unnamed-font-style-normal) normal
+    var(--unnamed-font-weight-medium) var(--unnamed-font-size-13) / 16px
+    var(--unnamed-font-family-poppins);
   letter-spacing: var(--unnamed-character-spacing-0);
   color: var(--unnamed-color-3b3b3b);
-  text-align: center;
   letter-spacing: 0px;
   color: #3b3b3b;
   opacity: 1;
@@ -183,7 +247,9 @@ export default {
 #oldPrice {
   text-decoration: line-through;
 
-  font: var(--unnamed-font-style-normal) normal var(--unnamed-font-weight-medium) var(--unnamed-font-size-13) / 16px var(--unnamed-font-family-poppins);
+  font: var(--unnamed-font-style-normal) normal
+    var(--unnamed-font-weight-medium) var(--unnamed-font-size-13) / 16px
+    var(--unnamed-font-family-poppins);
   letter-spacing: var(--unnamed-character-spacing-0);
   color: var(--unnamed-color-3b3b3b);
   text-align: center;
@@ -194,7 +260,8 @@ export default {
   font-size: 16px;
 }
 #newPrice {
-  font: var(--unnamed-font-style-normal) normal bold 14px/21px var(--unnamed-font-family-poppins);
+  font: var(--unnamed-font-style-normal) normal bold 14px/21px
+    var(--unnamed-font-family-poppins);
   letter-spacing: var(--unnamed-character-spacing-0);
   color: var(--unnamed-color-772ce8);
   text-align: center;
@@ -208,21 +275,48 @@ export default {
   border: 1px solid #e2e2e2;
   border-radius: 8px;
   opacity: 1;
+  min-width: 250px;
+}
+
+#card-text {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  max-width: 250px;
+  text-align: center;
 }
 
 #opcionesFiltro {
   font-size: 12px;
 }
 
-#items {
-  width: 300px;
-  display: inline-block;
-}
-#divProducts {
-  float: left;
-}
-
 #divFiltros {
   float: left;
 }
+.price {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  max-width: 200px;
+  text-align: center;
+  margin: auto;
+}
+.product {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  max-width: 200px;
+  text-align: center;
+}
+.brand {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+#smallCard {
+  min-width: 230px;
+
+  height: 500px;
+}
 </style>
+

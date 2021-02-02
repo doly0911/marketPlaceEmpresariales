@@ -12,29 +12,62 @@
       <h1 class="ma-4" id="TituloHome">¿Que estas buscando hoy?</h1>
       <v-col></v-col>
     </v-row>
-    <h1>Bienvenido al home</h1>
     <div class="ma-2">
-      <v-row>
-        <v-col></v-col>
-        <img id="Iconos" src="https://firebasestorage.googleapis.com/v0/b/oelo-2315e.appspot.com/o/iconos%2F9.jfif?alt=media&token=5cefa235-a124-4b0c-9854-1fb36f2b83cd" alt="">
-        <img id="Iconos" src="https://firebasestorage.googleapis.com/v0/b/oelo-2315e.appspot.com/o/iconos%2F8.jfif?alt=media&token=20ddce90-47c7-4abd-a8e8-a2fe9645c854" alt="">
-        <img id="Iconos" src="https://firebasestorage.googleapis.com/v0/b/oelo-2315e.appspot.com/o/iconos%2F7.jfif?alt=media&token=c4241a5a-aea6-44cc-861d-ab4f86177d15" alt="">
-        <img id="Iconos" src="https://firebasestorage.googleapis.com/v0/b/oelo-2315e.appspot.com/o/iconos%2F6.jfif?alt=media&token=dc38151b-6ebb-4904-83f0-23b6a5b593e1" alt="">
-        <img id="Iconos" src="https://firebasestorage.googleapis.com/v0/b/oelo-2315e.appspot.com/o/iconos%2F5.jfif?alt=media&token=577b3baa-3996-45f7-ae9c-d6166445caac" alt="">
-        <img id="Iconos" src="https://firebasestorage.googleapis.com/v0/b/oelo-2315e.appspot.com/o/iconos%2F4.jfif?alt=media&token=e839f547-e371-44a9-aa9d-dbb6ee5ec3d5" alt="">
-        <img id="Iconos" src="https://firebasestorage.googleapis.com/v0/b/oelo-2315e.appspot.com/o/iconos%2F3.jfif?alt=media&token=9c2af6a4-fa51-4d71-8def-cf01ef1285d2" alt="">
-        <img id="Iconos" src="https://firebasestorage.googleapis.com/v0/b/oelo-2315e.appspot.com/o/iconos%2F2.jfif?alt=media&token=736ed39a-ca2c-46ce-a068-9e0e02fb0f20" alt="">
-        <img id="Iconos" src="https://firebasestorage.googleapis.com/v0/b/oelo-2315e.appspot.com/o/iconos%2F1.jfif?alt=media&token=c61fd589-1982-436b-b8de-3753295fe9b4" alt="">
-        <v-col></v-col>
-      </v-row>
+      <IconSlider />
+    </div>
+    <div>
+      <v-col>
+        <v-row class="mb-10">
+          <img
+            id="ImageBanner"
+            src="https://firebasestorage.googleapis.com/v0/b/oelo-2315e.appspot.com/o/Empresariales%2Fbanner-auxilar-ordenadores%402x.png?alt=media&token=9c22ee90-51a4-4c23-9bdd-a3bbc178a83a"
+            alt=""
+          />
+          <v-card id="cards"
+            ><img
+              id="ImageCards"
+              src="https://firebasestorage.googleapis.com/v0/b/oelo-2315e.appspot.com/o/Empresariales%2Fproducto1%402x.png?alt=media&token=f007e960-2c52-434b-b259-d90b24c89214"
+              alt=""
+          /></v-card>
+          <v-card id="cards"
+            ><img
+              id="ImageCards"
+              src="https://firebasestorage.googleapis.com/v0/b/oelo-2315e.appspot.com/o/Empresariales%2Fproducto2%402x.png?alt=media&token=aa63d324-f643-4ff7-bc7e-f509b8f233d0"
+              alt=""
+          /></v-card>
+        </v-row>
+        <v-row class="mt-10">
+          <v-card id="cards"
+            ><img
+              id="ImageCards"
+              src="https://firebasestorage.googleapis.com/v0/b/oelo-2315e.appspot.com/o/Empresariales%2Fproducto3%402x.png?alt=media&token=b85afc99-ca50-4250-ae8e-ab5bfcdb72f9"
+              alt=""
+          /></v-card>
+          <v-card id="cards"
+            ><img
+              id="ImageCards"
+              src="https://firebasestorage.googleapis.com/v0/b/oelo-2315e.appspot.com/o/Empresariales%2Fproducto4%402x.png?alt=media&token=e4f2de3a-ec68-42cc-abd1-3e74379ac2b2"
+              alt=""
+          /></v-card>
+          <img
+            id="ImageBanner"
+            src="https://firebasestorage.googleapis.com/v0/b/oelo-2315e.appspot.com/o/Empresariales%2Fbanner-auxiliar-bicicletas%402x.png?alt=media&token=a6b97c84-f266-418d-9699-f6b38c075565"
+            alt=""
+          />
+        </v-row>
+      </v-col>
     </div>
   </div>
 </template>
 
 <script>
+import IconSlider from "../components/IconSlider";
+
 export default {
   name: "Home",
-  components: {},
+  components: {
+    IconSlider,
+  },
   data() {
     return {
       banners: [
@@ -47,50 +80,15 @@ export default {
             "https://firebasestorage.googleapis.com/v0/b/oelo-2315e.appspot.com/o/BlackFridayEmpresariales.jfif?alt=media&token=9c2a6ddc-a1e6-4f95-9f16-9e34becaf345",
         },
       ],
-      // icons: [
-      //   {
-      //     src:
-      //       "https://firebasestorage.googleapis.com/v0/b/oelo-2315e.appspot.com/o/iconos%2F9.jfif?alt=media&token=5cefa235-a124-4b0c-9854-1fb36f2b83cd",
-      //   },
-      //   {
-      //     src:
-      //       "https://firebasestorage.googleapis.com/v0/b/oelo-2315e.appspot.com/o/iconos%2F8.jfif?alt=media&token=20ddce90-47c7-4abd-a8e8-a2fe9645c854",
-      //   },
-      //   {
-      //     src:
-      //       "https://firebasestorage.googleapis.com/v0/b/oelo-2315e.appspot.com/o/iconos%2F7.jfif?alt=media&token=c4241a5a-aea6-44cc-861d-ab4f86177d15",
-      //   },
-      //   {
-      //     src:
-      //       "https://firebasestorage.googleapis.com/v0/b/oelo-2315e.appspot.com/o/iconos%2F6.jfif?alt=media&token=dc38151b-6ebb-4904-83f0-23b6a5b593e1",
-      //   },
-      //   {
-      //     src:
-      //       "https://firebasestorage.googleapis.com/v0/b/oelo-2315e.appspot.com/o/iconos%2F5.jfif?alt=media&token=577b3baa-3996-45f7-ae9c-d6166445caac",
-      //   },
-      //   {
-      //     src:
-      //       "https://firebasestorage.googleapis.com/v0/b/oelo-2315e.appspot.com/o/iconos%2F4.jfif?alt=media&token=e839f547-e371-44a9-aa9d-dbb6ee5ec3d5",
-      //   },
-      //   {
-      //     src:
-      //       "https://firebasestorage.googleapis.com/v0/b/oelo-2315e.appspot.com/o/iconos%2F3.jfif?alt=media&token=9c2af6a4-fa51-4d71-8def-cf01ef1285d2",
-      //   },
-      //   {
-      //     src:
-      //       "https://firebasestorage.googleapis.com/v0/b/oelo-2315e.appspot.com/o/iconos%2F2.jfif?alt=media&token=736ed39a-ca2c-46ce-a068-9e0e02fb0f20",
-      //   },
-      //   {
-      //     src:
-      //       "https://firebasestorage.googleapis.com/v0/b/oelo-2315e.appspot.com/o/iconos%2F1.jfif?alt=media&token=c61fd589-1982-436b-b8de-3753295fe9b4",
-      //   },
-      // ],
     };
   },
 };
 </script>
 
 <style scoped>
+#Center {
+  margin: auto;
+}
 #TituloHome {
   top: 593px;
   left: 444px;
@@ -105,5 +103,28 @@ export default {
 }
 #Iconos {
   margin: 25px;
+}
+#ImageCards {
+  max-width: 256px;
+  max-height: 202px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+#ImageBanner {
+  margin: auto;
+  width: 625px;
+  height: 202px;
+  background: transparent 0% 0% no-repeat padding-box;
+  opacity: 1;
+}
+#cards {
+  margin: auto;
+  width: 256px;
+  height: 202px;
+  background: 0% 0% no-repeat padding-box;
+  background: #f4f6fa 0% 0% no-repeat padding-box;
+  box-shadow: 0px 3px 6px #00000029;
+  border-radius: 20px;
 }
 </style>

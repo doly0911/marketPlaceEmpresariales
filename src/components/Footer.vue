@@ -66,13 +66,13 @@
               <div>
                 <input
                   type="text"
-                  id="subs"
+                  id="subs1"
                   placeholder="Ingresa tu correo electrónico"
                 />
               </div>
             </v-col>
             <v-col
-              ><v-btn color="white" outlined rounded class="ma-2"
+              ><v-btn  color="white" outlined rounded class="ma-2"
                 >Suscribirse</v-btn
               ></v-col
             >
@@ -81,7 +81,7 @@
       </v-row>
     </div>
     <!--Seccion de links-->
-    <div>
+    <div class="ma-5">
       <v-row>
         <v-col>
           <v-img id="logolink" src="../assets/logo-oldwave-header.png"></v-img>
@@ -109,17 +109,8 @@
           </v-row>
           <v-row>
             <p id="titletext">Redes Sociales</p>
-          </v-row>
-          <v-row>
-            <v-col
-              ><v-img id="networkicon" src="../assets/icon-facebook.png"></v-img
-            ></v-col>
-            <v-col
-              ><v-img
-                id="networkicon"
-                src="../assets/icon-instagram.png"
-              ></v-img
-            ></v-col>
+            <v-img id="networkicon" src="../assets/icon-facebook.png"></v-img>
+            <v-img id="networkicon" src="../assets/icon-instagram.png"> </v-img>
           </v-row>
         </v-col>
       </v-row>
@@ -155,7 +146,7 @@
 #icotx1 {
   color: #772ce8;
 }
-#subs {
+#subs1 {
   padding-left: 15px;
   width: 324px;
   height: 38px;
@@ -212,7 +203,7 @@
 }
 #networkicon {
   margin: auto;
-  width: 40px;
+  max-width: 40px;
 }
 #logolink {
   margin: auto;
