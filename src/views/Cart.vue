@@ -18,16 +18,14 @@
             <v-row class="datos">
               <v-list-item-content>
                 <v-col>
-                  <v-list-item-title
-                    class="name"
-                    v-html="item.name"
-                  ></v-list-item-title>
+                  <v-list-item-title class="name">
+                    {{ item.name }}
+                  </v-list-item-title>
                 </v-col>
                 <v-col>
-                  <v-list-item-subtitle
-                    class="price"
-                    v-html="item.price"
-                  ></v-list-item-subtitle>
+                  <v-list-item-subtitle class="price">
+                    ${{ formatPrice(item.price) }}
+                  </v-list-item-subtitle>
                 </v-col>
               </v-list-item-content>
 
@@ -37,8 +35,9 @@
                 elevation="2"
                 @click="deleteItem(index)"
                 rounded
-                ><v-icon color="white">mdi-delete</v-icon> Eliminar</v-btn
               >
+                <v-icon color="white">mdi-delete</v-icon> Eliminar
+              </v-btn>
             </v-row>
           </v-list-item>
         </v-list>
@@ -64,6 +63,10 @@ export default {
       this.cart.splice(index, 1);
       const parsed = JSON.stringify(this.cart);
       localStorage.setItem("cart", parsed);
+    },
+    formatPrice(value) {
+      let val = (value / 1).toFixed(2).replace(".", ",");
+      return val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
     },
   },
 

@@ -20,9 +20,9 @@
                       </v-list-item-action>
 
                       <v-list-item-content>
-                        <v-list-item-title id="opcionesFiltro"
-                          >Iphone 11</v-list-item-title
-                        >
+                        <v-list-item-title id="opcionesFiltro">
+                          Iphone 11
+                        </v-list-item-title>
                         <v-list-item-subtitle></v-list-item-subtitle>
                       </v-list-item-content>
                     </template>
@@ -35,9 +35,9 @@
                       </v-list-item-action>
 
                       <v-list-item-content>
-                        <v-list-item-title id="opcionesFiltro"
-                          >Iphone 11 pro</v-list-item-title
-                        >
+                        <v-list-item-title id="opcionesFiltro">
+                          Iphone 11 pro
+                        </v-list-item-title>
                         <v-list-item-subtitle></v-list-item-subtitle>
                       </v-list-item-content>
                     </template>
@@ -50,9 +50,9 @@
                       </v-list-item-action>
 
                       <v-list-item-content>
-                        <v-list-item-title id="opcionesFiltro"
-                          >Iphone 11 pro plus</v-list-item-title
-                        >
+                        <v-list-item-title id="opcionesFiltro">
+                          Iphone 11 pro plus
+                        </v-list-item-title>
                         <v-list-item-subtitle></v-list-item-subtitle>
                       </v-list-item-content>
                     </template>
@@ -86,18 +86,24 @@
                     <v-card-text>
                       <!--ESTA ES LA CLASE QUE ME CENTRA TODO -->
                       <div class="text-center" id="card-text">
-                        <v-card-title id="productName" class="product">{{
-                          item.name
-                        }}</v-card-title>
-                        <v-card-text id="productBrand" class="brand">{{
-                          item.brand
-                        }}</v-card-text>
+                        <v-card-title id="productName" class="product">
+                          {{ item.name }}
+                        </v-card-title>
+                        <v-card-text id="productBrand" class="brand">
+                          {{ item.brand }}
+                        </v-card-text>
                         <v-row>
                           <v-col>
-                            <p id="oldPrice" class="price">{{ item.price }}</p>
+                            <p id="oldPrice" class="price">
+                              ${{ formatPrice(item.price) }}
+                            </p>
                           </v-col>
+                        </v-row>
+                        <v-row>
                           <v-col>
-                            <p id="newPrice" class="price">{{ item.price }}</p>
+                            <p id="newPrice" class="price">
+                              ${{ formatPrice(item.price) }}
+                            </p>
                           </v-col>
                         </v-row>
                         <v-rating
@@ -111,7 +117,7 @@
                           Seller: {{ product.seller.name }}
                         </v-card-text>
                         <v-btn
-                        id="addCart"
+                          id="addCart"
                           rounded
                           color="#772CE8"
                           dark
@@ -179,6 +185,10 @@ export default {
   },
 
   methods: {
+    formatPrice(value) {
+      let val = (value / 1).toFixed(2).replace(".", ",");
+      return val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+    },
     reload: async function () {
       this.search = this.$route.params.search;
       this.products = await productServices.getProducts(this.search);
@@ -198,7 +208,7 @@ export default {
         const parsed = JSON.stringify(this.cart);
         localStorage.setItem("cart", parsed);
       }
-      alert("Se ha añadido el producto al carrito")
+      alert("Se ha añadido el producto al carrito");
     },
   },
 };
@@ -287,9 +297,9 @@ export default {
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
-  max-width: 100px;
+  max-width: 200px;
   text-align: center;
-  margin: 0;
+  margin: auto;
 }
 .product {
   text-overflow: ellipsis;
